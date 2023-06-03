@@ -3,7 +3,7 @@
 void main()
 {
     int choice;
-    int arr[100][100],transpose[100][100],a[100][100],b[100][100],res[100][100],i,j,k,m,n,p,q;
+    int arr[100][100],transpose[100][100],a[100][100],b[100][100],res[100][100],i,j,k,m,n,p,q,temp;
     printf("PRESS 1 TO DISPLAY THE MATRIX\n");
     printf("PRESS 2 TO DISPLAY TRANSPOSE OF THE MATRIX\n");
     printf("PRESS 3 TO ROTATE THE MATRIX BY 90 DEGREES CLOCKWISE AND DISPLAY IT\n");
@@ -51,17 +51,26 @@ void main()
                     scanf("%d",&arr[i][j]);
                 }
             }
-            for(i=0;i<n;i++)
-            {
-                for(j=0;j<m;j++)
-                {
-                    transpose[i][j]=arr[j][i];
-                }
-            }
-            printf("Transpose of the matrix:\n");
+            printf("the matrix is:\n");
             for(i=0;i<m;i++)
             {
                 for(j=0;j<n;j++)
+                {
+                    printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
+            }
+            for(i=0;i<m;i++)
+            {
+                for(j=0;j<n;j++)
+                {
+                    transpose[j][i]=arr[i][j];
+                }
+            }
+            printf("\nTranspose of the matrix:\n");
+            for(i=0;i<n;i++)
+            {
+                for(j=0;j<m;j++)
                 {
                     printf("%d\t",transpose[i][j]);
                 }
@@ -80,26 +89,7 @@ void main()
                     scanf("%d",&arr[i][j]);
                 }
             }
-            for(i=0;i<n;i++)
-            {
-                for(j=0;j<m;j++)
-                {
-                    transpose[i][j]=arr[j][i];
-                }
-            }
-            for(i=0;i<m;i++)
-            {
-                int j=0,k=n-1,temp;
-                while(j<k)
-                {
-                    temp=arr[i][j];
-                    arr[i][j]=arr[i][k];
-                    arr[i][k]=temp;
-                    j++;
-                    k--;
-                }
-            }
-            printf("The 90 degrees rotated matrix is:\n");
+            printf("the matrix is:\n");
             for(i=0;i<m;i++)
             {
                 for(j=0;j<n;j++)
@@ -107,6 +97,43 @@ void main()
                     printf("%d\t",arr[i][j]);
                 }
                 printf("\n");
+            }
+            for(i=0;i<n;i++)
+            {
+                for(j=0;j<=i;j++)
+                {
+                    temp=arr[i][j];
+                    arr[i][j]=arr[j][i];
+                    arr[j][i]=temp;
+                }
+            }
+            if(m==n)
+            {
+                for(i=0;i<m;i++)
+                {
+                    int j=0,k=n-1,temp;
+                    while(j<k)
+                    {
+                        temp=arr[i][j];
+                        arr[i][j]=arr[i][k];
+                        arr[i][k]=temp;
+                        j++;
+                        k--;
+                    }
+                }
+                printf("\nThe 90 degrees rotated matrix is:\n");
+                for(i=0;i<m;i++)
+                {
+                    for(j=0;j<n;j++)
+                    {
+                        printf("%d\t",arr[i][j]);
+                    }
+                    printf("\n");
+                }
+            }
+            else
+            {
+                printf("Rotation is not possible");
             }
             break;
 
@@ -120,6 +147,15 @@ void main()
                     printf("Enter values of matrix[%d][%d]:",i,j);
                     scanf("%d",&arr[i][j]);
                 }
+            }
+            printf("the matrix is:\n");
+            for(i=0;i<m;i++)
+            {
+                for(j=0;j<n;j++)
+                {
+                    printf("%d\t",arr[i][j]);
+                }
+                printf("\n");
             }
             for(i=0;i<m;i++)
             {
@@ -136,7 +172,7 @@ void main()
                     }
                 }
             }
-            printf("The wave pattern of matrix is:\n");
+            printf("\nThe wave pattern of matrix is:\n");
             for(i=0;i<m;i++)
             {
                 for(j=0;j<n;j++)
